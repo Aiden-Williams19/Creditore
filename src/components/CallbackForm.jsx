@@ -10,6 +10,8 @@ const CallbackForm = () => {
   })
 
   const [submitted, setSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('')
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target
@@ -19,19 +21,50 @@ const CallbackForm = () => {
     }))
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log('Form submitted:', formData)
-    setSubmitted(true)
-    setTimeout(() => {
-      setSubmitted(false)
+    setIsSubmitting(true)
+    setErrorMessage('')
+
+    try {
+      const response = await fetch('https://formspree.io/f/myzlzzad', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          contactNumber: formData.contactNumber,
+          email: formData.email,
+          preferredTime: formData.preferredTime,
+          formSource: 'callback-form'
+        })
+      })
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => null)
+        const message = errorData?.errors?.[0]?.message || 'Something went wrong. Please try again.'
+        throw new Error(message)
+      }
+
+      setSubmitted(true)
       setFormData({
         name: '',
         contactNumber: '',
         email: '',
         preferredTime: ''
       })
-    }, 3000)
+
+      setTimeout(() => {
+        setSubmitted(false)
+      }, 3500)
+    } catch (error) {
+      console.error('Form submission failed:', error)
+      setErrorMessage(error.message || 'Unable to submit the form right now.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -95,9 +128,17 @@ const CallbackForm = () => {
               <option value="evening">Evening (16:00 - 19:00)</option>
             </select>
           </div>
-          <button type="submit" className="btn-submit" disabled={submitted}>
-            {submitted ? 'Thank You! We\'ll Contact You Soon.' : 'Submit'}
+          <button type="submit" className="btn-submit" disabled={isSubmitting || submitted}>
+            {isSubmitting ? 'Sending...' : submitted ? 'Thank You! We\'ll Contact You Soon.' : 'Submit'}
           </button>
+          {submitted && !errorMessage && !isSubmitting && (
+            <p className="form-feedback form-feedback--success">
+              Thank you! A registered debt counsellor will contact you shortly.
+            </p>
+          )}
+          {errorMessage && (
+            <p className="form-feedback form-feedback--error">{errorMessage}</p>
+          )}
         </form>
       </div>
     </section>
