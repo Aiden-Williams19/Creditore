@@ -132,6 +132,37 @@
   margin-top: 3rem;
 }
 
+.trust {
+  background: var(--white);
+}
+
+.trust-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.trust-card {
+  background: var(--white);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 10px;
+  padding: 1.25rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.trust-card h4 {
+  margin-bottom: 0.5rem;
+  color: var(--primary-blue);
+}
+
+.trust-note {
+  margin-top: 1rem;
+  color: var(--text-light);
+  font-size: 0.95rem;
+  text-align: center;
+}
+
 .value-card {
   background: var(--white);
   padding: 2rem;

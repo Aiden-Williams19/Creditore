@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Header from './components/Header'
 import Footer from './components/Footer'
+import StickyActions from './components/StickyActions'
 import Home from './pages/Home'
 import HowItWorks from './pages/HowItWorks'
 import FAQ from './pages/FAQ'
@@ -20,6 +21,7 @@ function App() {
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>
+        <StickyActions />
         <Footer />
       </div>
     </Router>

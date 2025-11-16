@@ -113,6 +113,35 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Trust & Compliance */}
+      <section className="trust section" aria-labelledby="trust-title">
+        <div className="container">
+          <h2 id="trust-title" className="section-title">Trust, Compliance & Credibility</h2>
+          <p className="section-subtitle">
+            Finance is about trust. We operate transparently and in compliance with South African regulations.
+          </p>
+          <div className="trust-grid">
+            <div className="trust-card">
+              <h4>NCR Registration</h4>
+              <p>NCR Registered Debt Counsellor — NCRDC-XXXX (placeholder)</p>
+            </div>
+            <div className="trust-card">
+              <h4>POPIA Aligned</h4>
+              <p>Your personal information is handled with strict confidentiality and lawful purpose.</p>
+            </div>
+            <div className="trust-card">
+              <h4>Secure & Confidential</h4>
+              <p>All assessments are private. We never contact your employer or family.</p>
+            </div>
+            <div className="trust-card">
+              <h4>Results-Focused</h4>
+              <p>Custom repayment plans, reduced instalments, and creditor protection.</p>
+            </div>
+          </div>
+          <p className="trust-note">Provide your official NCR number to replace the placeholder above.</p>
+        </div>
+      </section>
+
       {/* Testimonials Section */}
       <TestimonialCarousel />
     </div>
