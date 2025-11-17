@@ -122,14 +122,59 @@
 
 /* Core Values Section */
 .core-values {
-  background: var(--light-grey);
+  background: linear-gradient(to bottom, #ffffff 0%, var(--light-grey) 100%);
+  padding: 5rem 0;
+  position: relative;
+}
+
+.core-values .section-title {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 0.5rem;
+}
+
+.core-values .section-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-blue) 0%, var(--primary-blue-light) 100%);
+  margin: 1.5rem auto 0;
+  border-radius: 2px;
+}
+
+.core-values::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 20% 50%, rgba(30, 58, 138, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(30, 58, 138, 0.03) 0%, transparent 50%);
+  pointer-events: none;
 }
 
 .values-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  margin-top: 3rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+  margin-top: 4rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.value-card:nth-child(4) {
+  grid-column: 2;
+}
+
+.value-card:nth-child(5) {
+  grid-column: 3;
 }
 
 .trust {
@@ -165,41 +210,140 @@
 
 .value-card {
   background: var(--white);
-  padding: 2rem;
-  border-radius: 10px;
+  padding: 3rem 2.5rem;
+  border-radius: 16px;
   text-align: center;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(30, 58, 138, 0.08);
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.05),
+    0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 300px;
+  position: relative;
+  overflow: hidden;
+}
+
+.value-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-blue) 0%, var(--primary-blue-light) 100%);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .value-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+  transform: translateY(-8px);
+  box-shadow: 
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  border-color: rgba(30, 58, 138, 0.15);
+}
+
+.value-card:hover::before {
+  transform: scaleX(1);
 }
 
 .value-icon {
   font-size: 3rem;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--primary-blue);
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, rgba(30, 58, 138, 0.08) 0%, rgba(59, 130, 246, 0.08) 100%);
+  border-radius: 20px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.value-icon::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 20px;
+  padding: 2px;
+  background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-light));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.value-card:hover .value-icon {
+  transform: scale(1.1);
+  background: linear-gradient(135deg, rgba(30, 58, 138, 0.12) 0%, rgba(59, 130, 246, 0.12) 100%);
+}
+
+.value-card:hover .value-icon::after {
+  opacity: 1;
 }
 
 .value-icon svg {
   width: 3rem;
   height: 3rem;
+  position: relative;
+  z-index: 1;
 }
 
 .value-card h3 {
   font-size: 1.5rem;
-  color: var(--primary-blue);
+  font-weight: 600;
+  color: var(--text-dark);
   margin-bottom: 1rem;
+  flex-shrink: 0;
+  letter-spacing: -0.02em;
+  transition: color 0.3s ease;
+}
+
+.value-card:hover h3 {
+  color: var(--primary-blue);
 }
 
 .value-card p {
   color: var(--text-light);
-  line-height: 1.6;
+  line-height: 1.75;
+  flex-grow: 1;
+  margin: 0;
+  font-size: 1rem;
+  letter-spacing: 0.01em;
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+  .core-values {
+    padding: 4rem 0;
+  }
+
+  .values-grid {
+    gap: 2rem;
+    max-width: 900px;
+  }
+
+  .value-card {
+    min-height: 280px;
+    padding: 2.5rem 2rem;
+  }
+
+  .value-icon {
+    width: 70px;
+    height: 70px;
+  }
+
+  .value-icon svg {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
 }
 
 @media (max-width: 768px) {
@@ -227,6 +371,46 @@
 
   .values-grid {
     grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 0;
+  }
+
+  .value-card:nth-child(4),
+  .value-card:nth-child(5) {
+    grid-column: 1;
+  }
+
+  .core-values {
+    padding: 3rem 0;
+  }
+
+  .core-values::before {
+    display: none;
+  }
+
+  .value-card {
+    min-height: auto;
+    padding: 2rem 1.5rem;
+    border-radius: 12px;
+  }
+
+  .value-icon {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 1.5rem;
+  }
+
+  .value-icon svg {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .value-card h3 {
+    font-size: 1.3rem;
+  }
+
+  .value-card p {
+    font-size: 0.95rem;
   }
 }
 
