@@ -98,7 +98,7 @@ const Home = () => {
           <div className="about-preview-content">
             <h2 className="section-title">About Creditore</h2>
             <p className="section-subtitle">
-              Creditore is a registered Debt Counselling practice dedicated to helping clients regain 
+              Creditore is a Debt Counselling practice with NCR Registered Debt Counsellors dedicated to helping clients regain 
               financial independence with dignity and support. We understand that debt can be overwhelming, 
               and we're here to guide you through a structured process that protects your rights and 
               helps you achieve financial freedom.
