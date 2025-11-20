@@ -11,7 +11,7 @@ const Footer = () => {
             <Link to="/" className="footer-logo-link" aria-label="Creditoré home">
               <img src={logoImg} alt="Creditoré" className="footer-logo" />
             </Link>
-            <p>Debt Counselling practice with NCR Registered Debt Counsellors helping South Africans regain financial independence with dignity and support.</p>
+            <p>Debt Counselling practice. We have NCR Registered Debt Counsellors helping South Africans regain financial independence with dignity and support.</p>
           </div>
           <div className="footer-section">
             <h4>Quick Links</h4>

@@ -133,7 +133,7 @@ const CallbackForm = () => {
           </button>
           {submitted && !errorMessage && !isSubmitting && (
             <p className="form-feedback form-feedback--success">
-              Thank you! A registered debt counsellor will contact you shortly.
+              Thank you! An NCR Registered Debt Counsellor will contact you shortly.
             </p>
           )}
           {errorMessage && (

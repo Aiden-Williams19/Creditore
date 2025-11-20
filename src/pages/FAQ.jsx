@@ -11,7 +11,7 @@ const FAQ = () => {
     },
     {
       question: 'Who qualifies for Debt Review?',
-      answer: 'You may qualify for Debt Review if you are over-indebted (struggling to meet your monthly debt obligations) and have a regular income. A registered debt counsellor will assess your financial situation to determine if you qualify.'
+      answer: 'You may qualify for Debt Review if you are over-indebted (struggling to meet your monthly debt obligations) and have a regular income. An NCR Registered Debt Counsellor will assess your financial situation to determine if you qualify.'
     },
     {
       question: 'How long does the Debt Review process take?',

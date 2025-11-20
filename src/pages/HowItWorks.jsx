@@ -12,7 +12,7 @@ const HowItWorks = () => {
     {
       number: 2,
       title: 'We Contact You',
-      description: 'One of our registered debt counsellors will contact you at your preferred time to discuss your situation and explain the process.'
+      description: 'One of our NCR Registered Debt Counsellors will contact you at your preferred time to discuss your situation and explain the process.'
     },
     {
       number: 3,
